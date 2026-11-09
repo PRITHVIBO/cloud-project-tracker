@@ -72,3 +72,12 @@ Project records are stored in browser `localStorage` on the current browser/prof
 ## Deployment responsibility
 
 CloudLab is a tracker and discovery UI; it does not provision infrastructure by itself. Follow each provider's current documentation and review licensing/security before using a repository in production.
+
+
+## Connect progress to DayPilot
+
+The **Connect DayPilot** button connects this browser’s tracker to your existing DayPilot account. In DayPilot 2.4, open **Connections**, select this tracker, enter the origin shown by the connector (for example `http://localhost:8000`), and create a connection. Paste its ingestion URL, connection ID, and token into this tracker, then choose **Save and send summary**.
+
+Automatic sync is optional and runs only while the tracker is open. It sends aggregate completion, attempt, time, and review counts where available; saved solutions, queries, notes, and full records remain in this tracker. Summary sync is not a full backup or two-way synchronization. Existing local storage and backup/import behavior are preserved. Serve the tracker over HTTPS or localhost; direct `file://` pages cannot connect.
+
+The DayPilot server must have the companion 2.4 dashboard update deployed. Tokens expire after 90 days and can be revoked in DayPilot. If syncing fails, the connector keeps local progress and displays an error; it does not replace tracker data.
